@@ -1,0 +1,43 @@
+
+<div class="outer-container">
+  <div class="signup-container">
+    <div class="signup-form">
+      <h2>Create an Account</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <div class="input-group">
+          <label for="username">Full Name</label>
+          <input type="text" id="username" placeholder="Enter your full name" formControlName="username">
+          @if (signupForm.controls['username'].invalid && signupForm.controls['username'].touched) {
+            <div class="warning">Username is required</div>
+          }
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" formControlName="email">
+          @if (signupForm.controls['email'].invalid && signupForm.controls['email'].touched) {
+            <div class="warning">Email is required</div>
+          }
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" formControlName="password">
+          @if (signupForm.controls['password'].invalid && signupForm.controls['password'].touched) {
+            <div class="warning">Password is required</div>
+          }
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" formControlName="confirmPassword">
+          @if ((signupForm.controls['confirmPassword'].invalid && signupForm.controls['confirmPassword'].touched) || (signupForm.value.password != signupForm.value.confirmPassword)) {
+            <div class="warning">The confirmed password is incorrect</div>
+          }
+        </div>
+        <button type="submit" class="signup-button" [disabled]="signupForm.invalid">Sign Up</button>
+      </form>
+
+      <div class="options">
+        <p>Already have an account? <a href="index.html">Log in</a></p>
+      </div>
+    </div>
+  </div>
+</div>

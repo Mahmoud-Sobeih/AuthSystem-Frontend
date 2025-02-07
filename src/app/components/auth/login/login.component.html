@@ -1,0 +1,39 @@
+<div class="outer-container">
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter your email" formControlName="email">
+                    @if (loginForm.controls['email'].invalid && loginForm.controls['email'].touched) {
+                        <div class="warning">Please enter your email</div>
+                    }
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" formControlName="password">
+                    @if (loginForm.controls['password'].invalid && loginForm.controls['password'].touched) {
+                        <div class="warning">Please enter your password</div>
+                    }
+                </div>
+                <button type="submit" class="login-button" [disabled]="loginForm.invalid">Login</button>
+            </form>
+
+            <div class="separator">
+                <span>OR</span>
+              </div>
+        
+              <!-- Social Login Buttons -->
+              <div class="social-login">
+                <button class="social-btn google" onclick="googleLogin()">Login with Google</button>
+                <button class="social-btn microsoft" onclick="microsoftLogin()">Login with Microsoft</button>
+              </div>
+        
+              <div class="options">
+                <p>Don't have an account? <a routerLink="/signup" >Sign up</a></p>
+                <p><a href="#">Forgot password?</a></p>
+              </div>
+        </div>
+    </div>
+</div>
